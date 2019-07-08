@@ -1,25 +1,25 @@
 class VM:
     def stock_details(self):
-        self.stocks = [{'product_code': 1, 'product': 'fruity', 'price': 20, 'stock': 20},
+        stocks = [{'product_code': 1, 'product': 'fruity', 'price': 20, 'stock': 20},
         {'product_code': 2, 'product': 'bovanto', 'price': 22, 'stock': 20},
         {'product_code': 3, 'product': 'mazza', 'price': 30, 'stock': 20},
         {'product_code': 4, 'product': 'slice', 'price': 32, 'stock': 20},]
-        self.display(self.stocks)
+        self.display(stocks)
         return stocks
 
-    def display(self,self.stocks):
+    def display(self,stocks):
         print("****Welcome to Megam Cool***")
         print("Select your product based on product code below")
         print("product_code  product    price  stock")
         print("______________________________________")
-        print("     1       fruity   20     ",self.stocks[0]['stock'])
-        print("     2       bovanto  22     ",self.stocks[1]['stock'])
-        print("     3       mazza    30     ",self.stocks[2]['stock'])
-        print("     4       slice    32     ",self.stocks[3]['stock'])
+        print("     1       fruity   20     ",stocks[0]['stock'])
+        print("     2       bovanto  22     ",stocks[1]['stock'])
+        print("     3       mazza    30     ",stocks[2]['stock'])
+        print("     4       slice    32     ",stocks[3]['stock'])
         print("______________________________________")
-        self.select_product(self.stocks)
+        self.select_product(stocks)
 
-    def select_product(self,self.stocks):
+    def select_product(self,stocks):
 
         product_order_list =[]
         bill = 0
@@ -28,12 +28,11 @@ class VM:
         if ch <=4 and ch >0:
             qty =int(input("Enter Quantity: "))
 
-            for s1 in self.stocks:
+            for s1 in stocks:
                 product_order_count ={'product_code':0,'product':0,'qty':0 ,'price':0, }
                 if ch == s1.get('product_code') :
                     if qty <= s1.get('stock') and qty > 0 :
                         bill += qty * s1.get('price')
-                        s1.['stock'] = s1.['stock'] - qty
 
                         print("Your chosen product is ",s1.get('product'))
                         print("Your chosen product price is ",s1.get('price'))
@@ -55,7 +54,7 @@ class VM:
                         self.select_product(stocks)
         else:
             print("Sorry,please chose valid product code")
-            self.select_product(self.stocks)
+            self.select_product(stocks)
 
         return product_order_list
 
